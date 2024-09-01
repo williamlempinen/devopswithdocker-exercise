@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  node-app:
+    build: .
+    container_name: node_app
+    volumes:
+      - ./:/usr/src/app
+      - node_modules:/usr/src/app
+    ports:
+      - 8080:8080
+
+  watch-tower:
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    container_name: watchtower
