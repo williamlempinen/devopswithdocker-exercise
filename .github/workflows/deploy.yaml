@@ -22,3 +22,8 @@ jobs:
         with:
           push: true
           tags: ${{secrets.DOCKERHUB_USERNAME}}/devopsdocker-ex-3:latest
+
+      - name: Deploy with compose
+        env:
+          REPO_USER: ${{secrets.DOCKERHUB_USERNAME}}
+          REPO_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}

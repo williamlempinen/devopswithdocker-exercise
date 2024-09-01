@@ -14,9 +14,10 @@ services:
     image: containrrr/watchtower
     environment:
       - WATCHTOWER_POLL_INTERVAL=60
+      - REPO_USER
+      - REPO_PASSWORD
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.docker/config.json:/config.json
     container_name: watchtower
 
 volumes:
