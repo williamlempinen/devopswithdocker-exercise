@@ -24,6 +24,8 @@ jobs:
           tags: ${{secrets.DOCKERHUB_USERNAME}}/devopsdocker-ex-3:latest
 
       - name: Deploy with compose
+        run: |
+          docker-compose -f docker-compose.yml up -d
         env:
           REPO_USER: ${{secrets.DOCKERHUB_USERNAME}}
           REPO_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
