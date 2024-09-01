@@ -1,0 +1,23 @@
+name: Release Node.js app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish-to-docker-hub:
+    name: publish to docker hub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to docker hub
+        uses:
+        with:
+          username:
+          password:
+      - name: Build and push
+        uses:
+        with:
+          push:
+          tags:
