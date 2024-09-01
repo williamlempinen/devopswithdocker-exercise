@@ -10,14 +10,15 @@ jobs:
     name: publish to docker hub
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - run: echo "Job start ${{github}}"
+      - uses: actions/checkout@v4
       - name: Login to docker hub
-        uses:
+        uses: docker/login-action@v1
         with:
-          username:
-          password:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
       - name: Build and push
-        uses:
+        uses: docker/build-push-action@v2
         with:
-          push:
-          tags:
+          push: true
+          tags: devopsdocker-ex-3:latest
